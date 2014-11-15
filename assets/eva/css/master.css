@@ -1,0 +1,345 @@
+h1, h2, h3, h4, h5, h6, p
+{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.gray
+{
+    color: #999;
+}
+
+#logo
+{
+    background-image: url(../img/logo.svg);
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 220px;
+    margin-top: 6px;
+
+}
+
+.nav .divider
+{
+    width: 1px;
+    background: #DDD;
+    height: 30px;
+    margin: 10px 10px;
+
+}
+
+.has-session
+{
+    display: none;
+}
+
+.no-session
+{
+    display: block;
+}
+
+body[data-has-session='1'] .has-session
+{
+    display: block;
+}
+
+body[data-has-session='1'] .no-session
+{
+    display: none;
+}
+
+.fr
+{
+    float: right;
+}
+
+.form button
+{
+    min-width: 100px;
+}
+
+.form
+{
+    max-width: 400px;
+    margin: auto;
+}
+
+/* ------------------------------------------- */
+
+#eva-matrix #sidebar-container .pin-button
+{
+    opacity: 0;
+    position: fixed;
+    top: 20px;
+    left: 182px;
+    cursor: pointer;
+    width: 50px;
+    text-align: center;
+}
+
+#eva-matrix #sidebar-container:hover .pin-button,
+#eva-matrix.pinned #sidebar-container .pin-button
+{
+    opacity: 1;
+    transition: opacity .5s ease;
+}
+
+#eva-matrix #sidebar-container .pin-button:hover
+{
+}
+
+#eva-matrix #sidebar-container .pin-button .pinned
+{
+    display: none;
+}
+
+#eva-matrix.pinned #sidebar-container .pin-button .pinned
+{
+    display: block;
+}
+
+#eva-matrix #sidebar-container .pin-button .unpinned
+{
+    display: block;
+}
+
+#eva-matrix.pinned #sidebar-container .pin-button .unpinned
+{
+    display: none;
+}
+
+/* ------------------------------------------- */
+
+#eva-matrix #sidebar-container
+{
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background: #FAFAFA;
+    width: 50px;
+    padding: 20px 20px 0px;
+    overflow-y: hidden;
+    transition: width .1s ease;
+}
+
+#eva-matrix #sidebar-container:hover,
+#eva-matrix.pinned #sidebar-container
+{
+    overflow-y: auto;
+}
+
+#eva-matrix.pinned #sidebar-container,
+#eva-matrix #sidebar-container:hover
+{
+    width: 250px;
+}
+
+#eva-matrix.pinned #sidebar-container div
+{
+    display: block;
+}
+
+#eva-matrix #sidebar-container div.last
+{
+    margin: 0;
+    padding: 0;
+}
+
+@-moz-document url-prefix()
+{
+    #eva-matrix #sidebar-container div.last
+    {
+        margin-bottom: 0px;
+    }
+}
+
+#eva-matrix #sidebar-container div.group
+{
+    opacity: 0;
+    transition: opacity .1s ease;
+}
+
+#eva-matrix #sidebar-container div.menu-icon
+{
+    position: fixed;
+    left: 12px;
+    opacity: 1;
+    background-image: url(../img/icon-menu.png);
+    background-size: 24px 24px;
+    width: 24px;
+    height: 24px;
+    transition: opacity 1s ease;
+}
+
+#eva-matrix #sidebar-container:hover div.group,
+#eva-matrix.pinned #sidebar-container div.group
+{
+    opacity: 1;
+    transition: opacity .5s ease;
+}
+
+#eva-matrix #sidebar-container:hover div.menu-icon,
+#eva-matrix.pinned #sidebar-container div.menu-icon
+{
+    opacity: 0;
+    transition: opacity .1s ease;
+}
+
+#eva-matrix #sidebar-container div.group
+{
+    margin-bottom: 30px;
+}
+
+#eva-matrix #sidebar-container .group div
+{
+    line-height: 30px;
+}
+
+#eva-matrix #sidebar-container .subgroup
+{
+    margin-left: -8px;
+}
+
+#eva-matrix #sidebar-container .subgroup .name
+{
+    font-weight: normal;
+    cursor: pointer;
+}
+
+#eva-matrix #sidebar-container .subgroup .items
+{
+    display: none;
+    color: #999;
+}
+
+#eva-matrix #sidebar-container .subgroup .arrow
+{
+    float: left;
+    opacity: .3;
+    background: url(../img/icon-right-arrow.png);
+    background-size: 28px 28px;
+    width: 28px;
+    height: 28px;
+}
+
+#eva-matrix #sidebar-container .subgroup.expand .arrow
+{
+    background: url(../img/icon-down-arrow.png);
+}
+
+#eva-matrix #sidebar-container .subgroup.expand .items
+{
+    display: block;
+    margin-left: 28px;
+}
+
+#eva-matrix #sidebar-container .subgroup.expand .items .sub-items
+{
+    margin: 0 0 20px;
+    padding: 0 15px;
+    list-style-type: square;
+}
+
+#eva-matrix #sidebar-container .subgroup.expand .items .sub-items li
+{
+    line-height: 15px;
+    margin-bottom: 10px;
+}
+
+#eva-matrix #sidebar-container .subgroup.expand .items .sub-items li a
+{
+    font-size: 12px;
+    color: #777;
+}
+
+#eva-matrix #sidebar-container .subgroup .items div:last-child
+{
+    margin-bottom: 15px;
+}
+
+/* ------------------------------------------- */
+
+#eva-matrix #sidebar-container #profile
+{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    overflow: hidden;
+    padding: 10px;
+    border-top: 1px solid rgba(0, 0, 0, .06);
+    background: #EFEFEF;
+}
+
+#eva-matrix #sidebar-container #profile .profilePicture
+{
+    width: 30px;
+    height: 30px;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    border-radius: 3px;
+    float: left;
+    background-color: rgba(0, 0, 0, 0.05);
+    margin-right: 10px;
+}
+
+#eva-matrix #sidebar-container #profile .profileName
+{
+    float: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 110px;
+    margin-right: 10px;
+    line-height: 30px;
+    color: #777;
+}
+
+#eva-matrix #sidebar-container #profile .profileMore
+{
+    float: right;
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/icon-more@2x.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 3px;
+    opacity: .7;
+    cursor: pointer;
+}
+
+#eva-matrix #sidebar-container #profile .profileMore:hover
+{
+    background-color: rgba(0, 0, 0, .1);
+}
+
+/* ------------------------------------------- */
+
+#eva-matrix #content-container
+{
+    z-index: 899;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 80px;
+    right: 0;
+    padding: 5px 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#eva-matrix.pinned #content-container
+{
+    left: 282px;
+}
+
+#eva-matrix #content-container #content
+{
+    margin-right: 35px;
+}
+
+#eva-matrix.pinned #content-container #content
+{
+    margin-right: 35px;
+}

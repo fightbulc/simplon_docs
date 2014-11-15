@@ -1,0 +1,28 @@
+#login
+{
+}
+
+/* ------------------------------------------- */
+
+#login #eva-matrix
+{
+
+    position: relative;
+    top: 20px;
+    left: 0px;
+    cursor: pointer;
+    width: 50px;
+    text-align: center;
+}
+
+#login #eva-matrix.pinned #content-container
+{
+    left: 0px;
+}
+
+#login #eva-matrix.pinned #content-container #content
+{
+    margin: 80px auto auto;
+    padding: 20px;
+    max-width: 900px;
+}

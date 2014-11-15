@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Simplon Docs Skeleton</title>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/highlightjs/styles/github.css">
+    <link rel="stylesheet" href="/eva/css/master.css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600,700" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        .content-title
+        {
+            border: 0;
+        }
+
+        .topic-title
+        {
+            border-bottom: 1px solid #eee;
+            margin: 40px 0;
+        }
+
+        .section-title
+        {
+            border-left: 15px solid #cef;
+            background: #fafafa;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        table
+        {
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <?php echo $data ?>
+    </div>
+
+    <script src="/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/vendor/highlightjs/highlight.pack.js"></script>
+
+    <script>
+        $(function ()
+        {
+            $(".section-title").click(function ()
+            {
+                $(this).next().next().toggle();
+            });
+        });
+    </script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+    "name": "simplon/docs",
+    "description": "Write docs by code so you can focus on your content (markdown, code, structure)",
+    "homepage": "https://github.com/fightbulc/simplon_docs",
+    "type": "library",
+    "keywords": [
+        "helper",
+        "documentation",
+        "docs",
+        "markdown",
+        "structure"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tino Ehrich",
+            "email": "tino@bigpun.me",
+            "role": "developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "erusev/parsedown": "1.1.*",
+        "camspiers/json-pretty": "1.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Simplon\\Docs\\": "src/"
+        }
+    }
+}

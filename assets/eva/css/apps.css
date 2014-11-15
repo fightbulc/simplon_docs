@@ -1,0 +1,56 @@
+#apps
+{
+}
+
+/* ------------------------------------------- */
+
+#apps #eva-matrix
+{
+
+    position: relative;
+    top: 20px;
+    left: 0px;
+    cursor: pointer;
+    width: 50px;
+    text-align: center;
+}
+
+#apps #eva-matrix.pinned #content-container
+{
+    left: 0px;
+}
+
+#apps #eva-matrix.pinned #content-container #content
+{
+    margin: 80px auto auto;
+    padding: 20px;
+    max-width: 900px;
+}
+
+#apps table th
+{
+    font-weight: bold;
+}
+
+#apps table tr td
+{
+    text-align: left;
+}
+
+#apps table tr td:first-child
+{
+    font-weight: normal;
+    text-align: left;
+    width: 100px;
+}
+
+#apps .new-app-btn
+{
+    margin-bottom: 20px;
+}
+
+#apps .delete-btn
+{
+    font-weight: normal;
+    text-decoration: underline;
+}

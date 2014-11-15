@@ -1,0 +1,103 @@
+/*
+    Paraíso (dark)
+    Created by Jan T. Sott (http://github.com/idleberg)
+    Inspired by the art of Rubens LP (http://www.rubenslp.com.br)
+*/
+
+/* Paraíso Comment */
+.hljs-comment,
+.hljs-title
+{
+    color: #8D8687;
+}
+
+/* Paraíso Red */
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.ruby .hljs-constant,
+.xml .hljs-tag .hljs-title,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo
+{
+    color: #EF6155;
+}
+
+/* Paraíso Orange */
+.hljs-number,
+.hljs-preprocessor,
+.hljs-built_in,
+.hljs-literal,
+.hljs-params,
+.hljs-constant
+{
+    color: #F99B15;
+}
+
+/* Paraíso Yellow */
+.ruby .hljs-class .hljs-title,
+.css .hljs-rules .hljs-attribute
+{
+    color: #FEC418;
+}
+
+/* Paraíso Green */
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.ruby .hljs-symbol,
+.xml .hljs-cdata
+{
+    color: #48B685;
+}
+
+/* Paraíso Aqua */
+.css .hljs-hexcolor
+{
+    color: #5BC4BF;
+}
+
+/* Paraíso Blue */
+.hljs-function,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-function .hljs-title,
+.ruby .hljs-title .hljs-keyword,
+.perl .hljs-sub,
+.javascript .hljs-title,
+.coffeescript .hljs-title
+{
+    color: #06B6EF;
+}
+
+/* Paraíso Purple */
+.hljs-keyword,
+.javascript .hljs-function
+{
+    color: #815BA4;
+}
+
+.hljs
+{
+    display: block;
+    background: #2F1E2E;
+    color: #A39E9B;
+    padding: 0.5em;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata
+{
+    opacity: 0.5;
+}
