@@ -1,15 +1,13 @@
 <?php
 
-namespace Simplon\Docs;
-
-use Simplon\Docs\BlockContents\DockBlockContentInterface;
+namespace Simplon\Docs\BlockContents;
 
 /**
  * DocBlockContentTable
- * @package Simplon\Docs
+ * @package Simplon\Docs\BlockContents
  * @author Tino Ehrich (tino@bigpun.me)
  */
-class DocBlockContentTable implements DockBlockContentInterface
+class DocBlockContentTable extends DocBlockContentAbstract
 {
     /**
      * @var array
@@ -45,8 +43,8 @@ class DocBlockContentTable implements DockBlockContentInterface
                 $tsep[] = '---';
             }
 
-            $table[] = "|" . join(" | ", $thead) . "|";
-            $table[] = "|" . join(" | ", $tsep) . "|";
+            $table[] = "|" . join(" | ", $thead);
+            $table[] = "|" . join(" | ", $tsep);
         }
 
         $tbody = [];
@@ -60,12 +58,12 @@ class DocBlockContentTable implements DockBlockContentInterface
                 $trow[] = $td;
             }
 
-            $tbody[] = "|" . join(" | ", $trow) . "|";
+            $tbody[] = "|" . join(" | ", $trow);
         }
 
         $table[] = join("\n", $tbody);
 
-        return join("\n", $table) . '<br>';
+        return join("\n", $table);
     }
 
     /**
@@ -101,9 +99,21 @@ class DocBlockContentTable implements DockBlockContentInterface
      *
      * @return DocBlockContentTable
      */
-    public function setRows(array $columns)
+    public function addRow(array $columns)
     {
         $this->rows[] = $columns;
+
+        return $this;
+    }
+
+    /**
+     * @param array $rows
+     *
+     * @return DocBlockContentTable
+     */
+    public function setRows(array $rows)
+    {
+        $this->rows = $rows;
 
         return $this;
     }

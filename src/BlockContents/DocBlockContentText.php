@@ -1,15 +1,13 @@
 <?php
 
-namespace Simplon\Docs;
-
-use Simplon\Docs\BlockContents\DockBlockContentInterface;
+namespace Simplon\Docs\BlockContents;
 
 /**
  * DocBlockContentText
- * @package Simplon\Docs
+ * @package Simplon\Docs\BlockContents
  * @author Tino Ehrich (tino@bigpun.me)
  */
-class DocBlockContentText implements DockBlockContentInterface
+class DocBlockContentText extends DocBlockContentAbstract
 {
     /**
      * @var array

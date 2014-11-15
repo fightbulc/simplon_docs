@@ -17,6 +17,11 @@ class DocBlock
     private $title;
 
     /**
+     * @var string
+     */
+    private $teaser;
+
+    /**
      * @var DockBlockContentInterface[]
      */
     private $contents = [];
@@ -54,6 +59,34 @@ class DocBlock
     }
 
     /**
+     * @return bool
+     */
+    public function hasTeaser()
+    {
+        return empty($this->teaser) === false;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTeaser()
+    {
+        return $this->teaser;
+    }
+
+    /**
+     * @param string $teaser
+     *
+     * @return DocBlock
+     */
+    public function setTeaser($teaser)
+    {
+        $this->teaser = trim($teaser);
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getTitle()
@@ -68,7 +101,7 @@ class DocBlock
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+        $this->title = trim($title);
 
         return $this;
     }

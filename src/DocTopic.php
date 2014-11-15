@@ -33,6 +33,18 @@ class DocTopic
     }
 
     /**
+     * @param DocSection $sections
+     *
+     * @return DocTopic
+     */
+    public function addSection(DocSection $sections)
+    {
+        $this->sections[] = $sections;
+
+        return $this;
+    }
+
+    /**
      * @param DocSection[] $sections
      *
      * @return DocTopic

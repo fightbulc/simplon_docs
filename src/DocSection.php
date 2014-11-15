@@ -45,7 +45,7 @@ class DocSection
      *
      * @return DocSection
      */
-    public function addBlocks(DocBlock $block)
+    public function addBlock(DocBlock $block)
     {
         $this->blocks[] = $block;
 

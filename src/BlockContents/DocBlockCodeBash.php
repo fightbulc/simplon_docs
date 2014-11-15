@@ -1,16 +1,13 @@
 <?php
 
-namespace Simplon\Docs;
-
-use Camspiers\JsonPretty\JsonPretty;
-use Simplon\Docs\BlockContents\DockBlockContentInterface;
+namespace Simplon\Docs\BlockContents;
 
 /**
- * DocBlockCodeJson
- * @package Simplon\Docs
+ * DocBlockCodeBash
+ * @package Simplon\Docs\BlockContents
  * @author Tino Ehrich (tino@bigpun.me)
  */
-class DocBlockCodeJson implements DockBlockContentInterface
+class DocBlockCodeBash extends DocBlockContentAbstract
 {
     /**
      * @var array
@@ -30,8 +27,8 @@ class DocBlockCodeJson implements DockBlockContentInterface
      */
     public function render()
     {
-        $code[] = '<pre><code class="json">';
-        $code[] = (new JsonPretty())->prettify(json_encode($this->getData()));
+        $code[] = '<pre><code class="bash">';
+        $code[] = join(" \\\n\t", $this->getData());
         $code[] = '</code></pre>';
 
         return join('', $code);

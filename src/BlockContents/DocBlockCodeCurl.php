@@ -1,15 +1,13 @@
 <?php
 
-namespace Simplon\Docs;
-
-use Simplon\Docs\BlockContents\DockBlockContentInterface;
+namespace Simplon\Docs\BlockContents;
 
 /**
  * DocBlockCodeCurl
- * @package Simplon\Docs
+ * @package Simplon\Docs\BlockContents
  * @author Tino Ehrich (tino@bigpun.me)
  */
-class DocBlockCodeCurl implements DockBlockContentInterface
+class DocBlockCodeCurl extends DocBlockContentAbstract
 {
     /**
      * @var string
@@ -49,10 +47,7 @@ class DocBlockCodeCurl implements DockBlockContentInterface
         }
 
         // add data
-        foreach ($this->data as $data)
-        {
-            $curl[] = "-d '{$data}'";
-        }
+        $curl[] = "-d '{($this->data}'";
 
         // add url
         $curl[] = "'{$this->url}'";
@@ -71,7 +66,7 @@ class DocBlockCodeCurl implements DockBlockContentInterface
     /**
      * @param string $header
      *
-     * @return DocBlockCodeCurl
+     * @return static
      */
     public function addHeader($header)
     {
@@ -83,7 +78,7 @@ class DocBlockCodeCurl implements DockBlockContentInterface
     /**
      * @param array $headers
      *
-     * @return DocBlockCodeCurl
+     * @return static
      */
     public function setHeaders(array $headers)
     {
@@ -103,7 +98,7 @@ class DocBlockCodeCurl implements DockBlockContentInterface
     /**
      * @param string $url
      *
-     * @return DocBlockCodeCurl
+     * @return static
      */
     public function setUrl($url)
     {
@@ -123,7 +118,7 @@ class DocBlockCodeCurl implements DockBlockContentInterface
     /**
      * @param array $data
      *
-     * @return DocBlockCodeJson
+     * @return static
      */
     public function setData(array $data)
     {

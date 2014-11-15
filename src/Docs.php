@@ -10,9 +10,39 @@ namespace Simplon\Docs;
 class Docs
 {
     /**
+     * @var string
+     */
+    private $title = 'Simplon Docs';
+
+    /**
      * @var DocContent[]
      */
     private $contents = [];
+
+    /**
+     * @var string
+     */
+    private $pathAssets;
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     *
+     * @return Docs
+     */
+    public function setTitle($title)
+    {
+        $this->title = trim($title);
+
+        return $this;
+    }
 
     /**
      * @return DocContent[]
@@ -49,9 +79,31 @@ class Docs
     /**
      * @return string
      */
+    public function getPathAssets()
+    {
+        return $this->pathAssets;
+    }
+
+    /**
+     * @param string $pathAssets
+     *
+     * @return Docs
+     */
+    public function setPathAssets($pathAssets)
+    {
+        $this->pathAssets = rtrim($pathAssets, '/');
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
     public function render()
     {
         $document = [];
+
+        $document[] = '<h1 class="doc-title"><strong>' . $this->getTitle() . '</strong></h1>';
 
         foreach ($this->getContents() as $docContent)
         {
@@ -89,9 +141,15 @@ class Docs
                         {
                             $document[] = '#### ' . $docBlock->getTitle();
 
+                            if ($docBlock->hasTeaser() === true)
+                            {
+                                $document[] = $docBlock->getTeaser();
+                            }
+
                             foreach ($docBlock->getContents() as $blockContent)
                             {
                                 $document[] = $blockContent->render();
+                                $document[] = '<br>';
                             }
                         }
                     }
@@ -107,14 +165,17 @@ class Docs
         }
 
         // render markdown to html
-        $data = \Parsedown::instance()->text(join("\n\n", $document));
+        $docs = \Parsedown::instance()->text(join("\n\n", $document));
 
         // adjust table to work with bootstrap
-        $data = str_replace('<table>', '<table class="table table-striped">', $data);
+        $docs = str_replace('<table>', '<table class="table table-striped">', $docs);
 
         // handle collapsable content
-        $data = str_replace('{{#collapse}}', '<div style="display:none;background: rgba(204, 238, 255, .1);border-radius:4px;padding:20px 40px 0">', $data);
-        $data = str_replace('{{/collapse}}', '</div>', $data);
+        $docs = str_replace('{{#collapse}}', '<div style="display:none;background: rgba(204, 238, 255, .1);border-radius:4px;padding:20px 40px 0">', $docs);
+        $docs = str_replace('{{/collapse}}', '</div>', $docs);
+
+        // set assets path
+        $pathAssets = $this->getPathAssets();
 
         // return content
         return require __DIR__ . '/Template/template.phtml';
