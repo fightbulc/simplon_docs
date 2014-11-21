@@ -144,6 +144,7 @@ class Docs
                         {
                             foreach ($docSection->getBlocks() as $docBlock)
                             {
+                                $document[] = '{{#block}}';
                                 $document[] = '#### ' . $docBlock->getTitle();
 
                                 if ($docBlock->hasTeaser() === true)
@@ -153,9 +154,33 @@ class Docs
 
                                 foreach ($docBlock->getContents() as $blockContent)
                                 {
+                                    $lastContentHadTitle = false;
+
+                                    if ($blockContent->hasTitle() === true)
+                                    {
+                                        $lastContentHadTitle = true;
+                                        $document[] = '#####' . $blockContent->getTitle();
+                                    }
+
+                                    if ($blockContent->hasTeaser() === true)
+                                    {
+                                        $document[] = $blockContent->getTeaser();
+                                    }
+
                                     $document[] = $blockContent->render();
+
+                                    if ($blockContent->hasTitle() === false)
+                                    {
+                                        $document[] = '<br>';
+                                    }
+                                }
+
+                                if ($lastContentHadTitle === true)
+                                {
                                     $document[] = '<br>';
                                 }
+
+                                $document[] = '{{/block}}';
                             }
                         }
 
@@ -175,6 +200,10 @@ class Docs
 
         // adjust table to work with bootstrap
         $docs = str_replace('<table>', '<table class="table table-striped">', $docs);
+
+        // handle block content
+        $docs = str_replace('{{#block}}', '<div class="block">', $docs);
+        $docs = str_replace('{{/block}}', '</div>', $docs);
 
         // handle collapsable content
         $docs = str_replace('{{#collapse}}', '<div style="display:none;background: rgba(204, 238, 255, .1);border-radius:4px;padding:20px 40px 0">', $docs);

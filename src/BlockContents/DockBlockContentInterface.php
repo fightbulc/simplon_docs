@@ -18,4 +18,24 @@ interface DockBlockContentInterface
      * @return string
      */
     public function render();
+
+    /**
+     * @return string
+     */
+    public function getTitle();
+
+    /**
+     * @return bool
+     */
+    public function hasTitle();
+
+    /**
+     * @return string
+     */
+    public function getTeaser();
+
+    /**
+     * @return bool
+     */
+    public function hasTeaser();
 }
