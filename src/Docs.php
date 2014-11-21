@@ -111,7 +111,7 @@ class Docs
 
             foreach ($docContent->getTopics() as $docTopic)
             {
-                $document[] = '<h2 class="topic-title">' . $docTopic->getTitle() . '</h2>';
+                $document[] = '##' . $docTopic->getTitle();
 
                 if ($docTopic->hasTeaser())
                 {
@@ -129,7 +129,7 @@ class Docs
                             ++$sectionCounter;
                             $idHash = md5($sectionCounter . $docSection->getTitle());
 
-                            $document[] = '<h3 id="' . $idHash . '" class="section-title">' . $sectionCounter . '. ' . $docSection->getTitle() . '</h3>';
+                            $document[] = '<h3 id="' . $idHash . '" class="section-title">' . \Parsedown::instance()->line($sectionCounter . '. ' . $docSection->getTitle()) . '</h3>';
                             $document[] = '{{#collapse}}';
                         }
 
