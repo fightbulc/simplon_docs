@@ -124,7 +124,10 @@ class Docs
                 {
                     if ($docSection->hasTitle())
                     {
-                        $document[] = '<h3 class="section-title">' . (++$sectionCounter) . '. ' . $docSection->getTitle() . '</h3>';
+                        ++$sectionCounter;
+                        $idHash = md5($sectionCounter . $docSection->getTitle());
+
+                        $document[] = '<h3 id="' . $idHash . '" class="section-title">' . $sectionCounter . '. ' . $docSection->getTitle() . '</h3>';
                         $document[] = '{{#collapse}}';
                     }
 

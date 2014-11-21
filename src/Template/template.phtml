@@ -63,9 +63,47 @@
     <script>
         $(function ()
         {
+            var cacheKey = 'openSections';
+
+            var updateCache = function (cache)
+            {
+                localStorage.setItem(cacheKey, JSON.stringify(cache));
+            };
+
+            // read cached open sections
+            var openSections = JSON.parse(localStorage.getItem(cacheKey));
+
+            if (openSections === null)
+            {
+                openSections = [];
+            }
+
             $(".section-title").click(function ()
             {
                 $(this).next().next().toggle();
+
+                // is elm in cache
+                var cacheIndex = openSections.indexOf(this.id)
+
+                // cache section
+                if (cacheIndex === -1)
+                {
+                    openSections.push(this.id);
+                }
+                else
+                {
+                    // remove cache
+                    openSections.splice(cacheIndex, 1);
+                }
+
+                // save cache
+                updateCache(openSections);
+            });
+
+            // trigger cached items
+            openSections.forEach(function (elm)
+            {
+                $('#' + elm).next().next().toggle();
             });
         });
     </script>
