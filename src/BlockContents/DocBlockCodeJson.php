@@ -30,7 +30,7 @@ class DocBlockCodeJson extends DocBlockContentAbstract
     public function render()
     {
         $code[] = '<pre><code class="json">';
-        $code[] = (new JsonPretty())->prettify(json_encode($this->getData()));
+        $code[] = (new JsonPretty())->prettify(str_replace('\/', '/', json_encode($this->getData())));
         $code[] = '</code></pre>';
 
         return join('', $code);

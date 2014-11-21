@@ -118,48 +118,51 @@ class Docs
                     $document[] = $docTopic->getTeaser() . '<br><br>';
                 }
 
-                $sectionCounter = 0;
-
-                foreach ($docTopic->getSections() as $docSection)
+                if (count($docTopic->getSections()) > 0)
                 {
-                    if ($docSection->hasTitle())
+                    $sectionCounter = 0;
+
+                    foreach ($docTopic->getSections() as $docSection)
                     {
-                        ++$sectionCounter;
-                        $idHash = md5($sectionCounter . $docSection->getTitle());
-
-                        $document[] = '<h3 id="' . $idHash . '" class="section-title">' . $sectionCounter . '. ' . $docSection->getTitle() . '</h3>';
-                        $document[] = '{{#collapse}}';
-                    }
-
-                    if ($docSection->hasTeaser())
-                    {
-                        $document[] = $docSection->getTeaser();
-                    }
-
-                    $document[] = '<br>';
-
-                    if ($docSection->hasBlocks())
-                    {
-                        foreach ($docSection->getBlocks() as $docBlock)
+                        if ($docSection->hasTitle())
                         {
-                            $document[] = '#### ' . $docBlock->getTitle();
+                            ++$sectionCounter;
+                            $idHash = md5($sectionCounter . $docSection->getTitle());
 
-                            if ($docBlock->hasTeaser() === true)
-                            {
-                                $document[] = $docBlock->getTeaser();
-                            }
+                            $document[] = '<h3 id="' . $idHash . '" class="section-title">' . $sectionCounter . '. ' . $docSection->getTitle() . '</h3>';
+                            $document[] = '{{#collapse}}';
+                        }
 
-                            foreach ($docBlock->getContents() as $blockContent)
+                        if ($docSection->hasTeaser())
+                        {
+                            $document[] = $docSection->getTeaser();
+                        }
+
+                        $document[] = '<br>';
+
+                        if ($docSection->hasBlocks())
+                        {
+                            foreach ($docSection->getBlocks() as $docBlock)
                             {
-                                $document[] = $blockContent->render();
-                                $document[] = '<br>';
+                                $document[] = '#### ' . $docBlock->getTitle();
+
+                                if ($docBlock->hasTeaser() === true)
+                                {
+                                    $document[] = $docBlock->getTeaser();
+                                }
+
+                                foreach ($docBlock->getContents() as $blockContent)
+                                {
+                                    $document[] = $blockContent->render();
+                                    $document[] = '<br>';
+                                }
                             }
                         }
-                    }
 
-                    if ($docSection->hasTitle())
-                    {
-                        $document[] = '{{/collapse}}';
+                        if ($docSection->hasTitle())
+                        {
+                            $document[] = '{{/collapse}}';
+                        }
                     }
                 }
             }

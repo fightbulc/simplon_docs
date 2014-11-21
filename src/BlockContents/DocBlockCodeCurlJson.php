@@ -30,7 +30,7 @@ class DocBlockCodeCurlJson extends DocBlockCodeCurl
         }
 
         // add data
-        $json = preg_replace('/\n/', "\n\t", $jsonPretty->prettify(json_encode($this->data)));
+        $json = preg_replace('/\n/', "\n\t", $jsonPretty->prettify(str_replace('\/', '/', json_encode($this->data))));
         $curl[] = "-d '{$json}'";
 
         return '<pre><code class="json">' . join(" \\\n\t", $curl) . '</code></pre>';
